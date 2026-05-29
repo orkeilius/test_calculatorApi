@@ -115,7 +115,7 @@ const server = http.createServer(requestHandler);
 
 module.exports = { requestHandler, server };
 
-if (require.main === module) {
+if (require.main === module || process.env.TEST_STARTUP === "true") {
     server.listen(PORT, () => {
         console.log(`Serveur démarré sur http://localhost:${PORT}`);
     });
