@@ -7,17 +7,17 @@ describe("Server startup", () => {
     process.env.TEST_STARTUP = "true";
 
     // Isolate module so "server.js" is evaluated fresh
-    jest.isolateModules(() => {
+    isolateModules(() => {
       // Mock console.log
-      const consoleSpy = jest.spyOn(console, "log").mockImplementation();
+      const consoleSpy = spyOn(console, "log").mockImplementation();
 
       // Mock http.createServer to intercept the listen call
-      const mockListen = jest.fn((port, cb) => {
+      const mockListen = fn((port, cb) => {
         // Execute the callback immediately to trigger the console.log
         if (cb) cb();
       });
 
-      jest.spyOn(http, "createServer").mockReturnValue({
+      spyOn(http, "createServer").mockReturnValue({
         listen: mockListen,
       });
 
