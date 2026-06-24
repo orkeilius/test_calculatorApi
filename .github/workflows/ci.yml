@@ -13,6 +13,9 @@ jobs:
   lint:
     name: Lint (ESLint)
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: nodejs
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v4
