@@ -71,29 +71,25 @@ jobs:
           path: java/target/surefire-reports/
           retention-days: 30
 
-    c-asm-test:
-      name: Tests C/ASM
-      runs-on: ubuntu-latest
-      needs: lint
-      defaults:
-        run:
-          working-directory: c-asm
-      steps:
-        - uses: actions/checkout@v5
-
-        - name: Installer NASM et GCC
-          run: |
-           sudo apt-get update
-           sudo apt-get install -y nasm gcc
-
-        - name: Compiler l'assembly
-          run: nasm -f elf64 operations.asm -o operations.o
-
-        - name: Compiler les tests C
-          run: gcc full_test.c operations.o -o full_test -lm
-
-        - name: Lancer les tests C/ASM
-          run: ./full_test
+  c-asm-test:
+    name: Tests C/ASM
+    runs-on: ubuntu-latest
+    needs: lint
+    defaults:
+      run:
+        working-directory: c-asm
+    steps:
+      - uses: actions/checkout@v5
+      - name: Installer NASM et GCC
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y nasm gcc
+      - name: Compiler l'assembly
+        run: nasm -f elf64 operations.asm -o operations.o
+      - name: Compiler les tests C
+        run: gcc full_test.c operations.o -o full_test -lm
+      - name: Lancer les tests C/ASM
+        run: ./full_test
 
   php-test:
     name: Tests PHP ${{ matrix.php-version }}
@@ -131,5 +127,3 @@ jobs:
           name: coverage-report-php-${{ matrix.php-version }}
           path: php/coverage/
           retention-days: 30
-
-  
