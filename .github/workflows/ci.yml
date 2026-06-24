@@ -74,7 +74,6 @@ jobs:
   c-asm-test:
     name: Tests C/ASM
     runs-on: ubuntu-latest
-    needs: lint
     defaults:
       run:
         working-directory: c-asm
