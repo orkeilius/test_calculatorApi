@@ -68,13 +68,7 @@ int main(void)
         tests_run++;
         printf("\033[32mdiv 0 / 0 | Valeur attendue=NaN Valeur actuelle=NaN\033[0m\n");
     }
-
-    printf("\nTest qui doit cassé : \n");
-    CHECK_EQ("div 20 / 5", div_numbers(20, 5), 7.0);
-    CHECK_EQ("mul 6 * 7", mul_numbers(6, 7), 75);
-    CHECK_EQ("sub 9 - 4", sub_numbers(9, 4), 1);
-    CHECK_EQ("add 5 + 8", add_numbers(5, 8), 47);
-
+    
     printf("\nRésultat des ptit tests\n");
     printf("Tests fait : %d\n", tests_run);
     printf("Tests cacaté  : %d\n", tests_failed);
