@@ -27,6 +27,9 @@ jobs:
   test:
     name: Tests Node.js ${{ matrix.node-version }}
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: nodejs
     needs: lint
     strategy:
       fail-fast: false
