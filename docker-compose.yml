@@ -12,3 +12,9 @@ services:
       - "8080:3000"
     environment:
       - PORT=3000
+
+  calculator-php:
+    build: ./php
+    container_name: calculator-php
+    ports:
+      - "9090:3000"
