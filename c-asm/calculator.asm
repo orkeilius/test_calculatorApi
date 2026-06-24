@@ -1,3 +1,5 @@
+; pas faire attention uwu
+
 section .data
     welcome db 0dh, 0ah, "Ma super calculatrice", 0dh, 0ah 
     welcome_length equ $ - welcome
