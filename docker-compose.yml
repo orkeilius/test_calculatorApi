@@ -1,0 +1,14 @@
+services:
+  calculator-node:
+    build: ./nodejs
+    container_name: calculator-node
+    ports:
+      - "3000:3000"
+
+  calculator-java:
+    build: ./java
+    container_name: calculator-java
+    ports:
+      - "8080:3000"
+    environment:
+      - PORT=3000
