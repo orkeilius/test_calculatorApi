@@ -83,18 +83,17 @@ jobs:
     defaults:
       run:
         working-directory: c-asm
+
     steps:
       - uses: actions/checkout@v5
+
       - name: Installer NASM et GCC
         run: |
           sudo apt-get update
           sudo apt-get install -y nasm gcc
-      - name: Compiler l'assembly
-        run: nasm -f elf64 operations.asm -o operations.o
-      - name: Compiler les tests C
-        run: gcc full_test.c operations.o -o full_test -lm
+
       - name: Lancer les tests C/ASM
-        run: ./full_test
+        run: bash run_tests.sh
 
   php-test:
     name: Tests PHP ${{ matrix.php-version }}
