@@ -1,6 +1,9 @@
 #include "unity.h"
 #include <math.h>
 
+void setUp(void) {}
+void tearDown(void) {}
+
 extern double add_numbers(double a, double b);
 extern double sub_numbers(double a, double b);
 extern double mul_numbers(double a, double b);
