@@ -4,6 +4,11 @@
 void setUp(void) {}
 void tearDown(void) {}
 
+extern double add_numbers(double a, double b);
+extern double sub_numbers(double a, double b);
+extern double mul_numbers(double a, double b);
+extern double div_numbers(double a, double b);
+
 void test_add_numbers(void)
 {
     TEST_ASSERT_EQUAL_DOUBLE(13.0, add_numbers(5, 8));
