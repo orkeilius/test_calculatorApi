@@ -18,3 +18,11 @@ services:
     container_name: calculator-php
     ports:
       - "9090:3000"
+
+  calculator-c-asm:
+    build: ./c-asm
+    container_name: calculator-c-asm
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001

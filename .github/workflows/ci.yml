@@ -27,6 +27,9 @@ jobs:
   test:
     name: Tests Node.js ${{ matrix.node-version }}
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: nodejs
     needs: lint
     strategy:
       fail-fast: false
@@ -76,6 +79,31 @@ jobs:
           name: test-reports-java-${{ matrix.java-version }}
           path: java/target/surefire-reports/
           retention-days: 30
+
+  c-asm-test:
+    name: Tests C/ASM
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: c-asm
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Installer NASM et GCC
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y nasm gcc curl
+
+      - name: Télécharger Unity
+        run: |
+          mkdir -p Unity/src
+          curl -L https://raw.githubusercontent.com/ThrowTheSwitch/Unity/master/src/unity.h -o Unity/src/unity.h
+          curl -L https://raw.githubusercontent.com/ThrowTheSwitch/Unity/master/src/unity.c -o Unity/src/unity.c
+          curl -L https://raw.githubusercontent.com/ThrowTheSwitch/Unity/master/src/unity_internals.h -o Unity/src/unity_internals.h
+
+      - name: Lancer les tests C/ASM
+        run: bash run_tests.sh
 
   php-test:
     name: Tests PHP ${{ matrix.php-version }}
