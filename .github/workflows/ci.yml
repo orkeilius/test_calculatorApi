@@ -94,9 +94,10 @@ jobs:
 
       - name: Télécharger Unity
         run: |
-          mkdir -p vendor/unity
-          curl -L https://raw.githubusercontent.com/ThrowTheSwitch/Unity/master/src/unity.h -o vendor/unity/unity.h
-          curl -L https://raw.githubusercontent.com/ThrowTheSwitch/Unity/master/src/unity.c -o vendor/unity/unity.c
+          mkdir -p Unity/src
+          curl -L https://raw.githubusercontent.com/ThrowTheSwitch/Unity/master/src/unity.h -o Unity/src/unity.h
+          curl -L https://raw.githubusercontent.com/ThrowTheSwitch/Unity/master/src/unity.c -o Unity/src/unity.c
+          curl -L https://raw.githubusercontent.com/ThrowTheSwitch/Unity/master/src/unity_internals.h -o Unity/src/unity_internals.h
 
       - name: Lancer les tests C/ASM
         run: bash run_tests.sh
