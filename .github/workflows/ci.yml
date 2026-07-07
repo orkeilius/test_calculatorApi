@@ -90,7 +90,13 @@ jobs:
       - name: Installer NASM et GCC
         run: |
           sudo apt-get update
-          sudo apt-get install -y nasm gcc
+          sudo apt-get install -y nasm gcc curl
+
+      - name: Télécharger Unity
+        run: |
+          mkdir -p vendor/unity
+          curl -L https://raw.githubusercontent.com/ThrowTheSwitch/Unity/master/src/unity.h -o vendor/unity/unity.h
+          curl -L https://raw.githubusercontent.com/ThrowTheSwitch/Unity/master/src/unity.c -o vendor/unity/unity.c
 
       - name: Lancer les tests C/ASM
         run: bash run_tests.sh
